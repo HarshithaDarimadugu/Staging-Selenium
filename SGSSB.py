@@ -74,7 +74,7 @@ class templesevaboooking():
                 time.sleep(2)
                 el8 = driver.find_element(By.XPATH,"//img[@src='../../../Images/Calendar/cal.gif']").click()
                 time.sleep(5)
-                ele8 =driver.find_element(By.XPATH,"//a[@title='December 10']").click()     
+                ele8 =driver.find_element(By.XPATH,"//a[@title='December 29']").click()     
                 time.sleep(5)
                 
                 ele9 = driver.find_element(By.XPATH,"//input[@name='devoteedetails$txtAadharNo']")
