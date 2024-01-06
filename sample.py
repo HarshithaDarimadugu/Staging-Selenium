@@ -13,7 +13,8 @@ import time
 # obj = Service('https://testautomationpractice.blogspot.com/')
 # driver = webdriver.Chrome(service = obj)
 driver = webdriver.Chrome()
-driver.get('https://testautomationpractice.blogspot.com/')
+# driver.get('https://testautomationpractice.blogspot.com/')
+driver.get('https://demo.automationtesting.in/Frames.html')
 # driver.get('http://www.deadlinkcity.com/')
 # driver.get('https://TSGOPR0001:123321@tsstaging.meeseva.telangana.gov.in/meesevastaging/login.htm')
 # driver.get('http://admin:admin@the-internet.herokuapp.com/basic_auth')
@@ -257,20 +258,30 @@ time.sleep(5)
 # time.sleep(7)
 
 # frame1 = driver.switch_to.frame('frame-one796456169')
-frame1 = driver.switch_to.frame(0)
-ele16 = driver.find_element(By.ID,"RESULT_RadioButton-3")
+# frame1 = driver.switch_to.frame(0)
+# ele16 = driver.find_element(By.ID,"RESULT_RadioButton-3")
+# ele16.click()
+# drpdown= Select(ele16)
+# drpdown.select_by_value('Radio-2')
+# driver.switch_to.default_content()
+# time.sleep(7)
+
+# ele1 = driver.find_element(By.XPATH,"//input[@id='name']")
+# ele1.click()
+# ele1.send_keys('Harshitha Darimadugu')
+# ele1.send_keys(Keys.ENTER)
+# time.sleep(5)
+
+########## inner frames
+ele16 =  driver.find_element(By.XPATH,"//a[normalize-space()='Iframe with in an Iframe']")
 ele16.click()
-drpdown= Select(ele16)
-drpdown.select_by_value('Radio-2')
-driver.switch_to.default_content()
-time.sleep(7)
-
-ele1 = driver.find_element(By.XPATH,"//input[@id='name']")
-ele1.click()
-ele1.send_keys('Harshitha Darimadugu')
-ele1.send_keys(Keys.ENTER)
+frame1 = driver.switch_to.frame((driver.find_element(By.XPATH,"//iframe[@src='MultipleFrames.html']")))
+frame2 = driver.switch_to.frame((driver.find_element(By.XPATH,"/html/body/section/div/div/iframe")))
+input_box= driver.find_element(By.XPATH,"//input[@type='text']")
+input_box.click()
+input_box.send_keys('Hi Krishna')
+input_box.send_keys(Keys.ENTER)
 time.sleep(5)
-
 
 driver.quit
 
