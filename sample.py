@@ -12,15 +12,15 @@ import time
 
 # obj = Service('https://testautomationpractice.blogspot.com/')
 # driver = webdriver.Chrome(service = obj)
-driver = webdriver.Chrome()
+# driver = webdriver.Chrome()
 # driver.get('https://testautomationpractice.blogspot.com/')
-driver.get('https://demo.automationtesting.in/Frames.html')
+# driver.get('https://demo.automationtesting.in/Frames.html')
 # driver.get('http://www.deadlinkcity.com/')
 # driver.get('https://TSGOPR0001:123321@tsstaging.meeseva.telangana.gov.in/meesevastaging/login.htm')
 # driver.get('http://admin:admin@the-internet.herokuapp.com/basic_auth')
-parent_handle = driver.current_window_handle
-driver.maximize_window()
-time.sleep(5)
+# parent_handle = driver.current_window_handle
+# driver.maximize_window()
+# time.sleep(5)
 
 ####################### entering the input in the fields
 # ele1 = driver.find_element(By.XPATH,"//input[@id='name']")
@@ -273,15 +273,182 @@ time.sleep(5)
 # time.sleep(5)
 
 ########## inner frames
-ele16 =  driver.find_element(By.XPATH,"//a[normalize-space()='Iframe with in an Iframe']")
-ele16.click()
-frame1 = driver.switch_to.frame((driver.find_element(By.XPATH,"//iframe[@src='MultipleFrames.html']")))
-frame2 = driver.switch_to.frame((driver.find_element(By.XPATH,"/html/body/section/div/div/iframe")))
-input_box= driver.find_element(By.XPATH,"//input[@type='text']")
-input_box.click()
-input_box.send_keys('Hi Krishna')
-input_box.send_keys(Keys.ENTER)
+# ele16 =  driver.find_element(By.XPATH,"//a[normalize-space()='Iframe with in an Iframe']")
+# ele16.click()
+# frame1 = driver.switch_to.frame((driver.find_element(By.XPATH,"//iframe[@src='MultipleFrames.html']")))
+# frame2 = driver.switch_to.frame((driver.find_element(By.XPATH,"/html/body/section/div/div/iframe")))
+# input_box= driver.find_element(By.XPATH,"//input[@type='text']")
+# input_box.click()
+# input_box.send_keys('Hi Krishna')
+# input_box.send_keys(Keys.ENTER)
+# time.sleep(5)
+
+###########checking window id's
+# ele16 =  driver.find_element(By.XPATH,"//button[@onclick='myFunction()']")
+# ele16.click()
+# windowids = driver.window_handles
+# print(windowids)
+# print('parent window id: ', windowids[0])
+# print('child window id: ',windowids[1])
+# time.sleep(5)
+
+######## SWICHING THE WINDOWIDS
+# ele16 =  driver.find_element(By.XPATH,"//button[@onclick='myFunction()']")
+# ele16.click()
+# windowids = driver.window_handles
+# print(windowids)
+
+# child = driver.switch_to.window(windowids[1])
+# print('title of chid window:', driver.title)
+
+# parent = driver.switch_to.window(windowids[0])
+# print('title of parent window:', driver.title)
+
+######frames
+# ele1 = driver.switch_to.frame("frame-one796456169")
+# time.sleep(5)
+# ele2 = driver.find_element(By.XPATH,"//label[@for='RESULT_RadioButton-1_1']")
+# driver.execute_script("arguments[0].scrollIntoView(0);",ele2)
+# ele2.click()
+# time.sleep(5)
+
+##########inner frames
+# ele1 = driver.find_element(By.XPATH,"//a[normalize-space()='Iframe with in an Iframe']")
+# ele1.click()
+# ele2 = driver.find_element(By.XPATH,"//a[normalize-space()='Single Iframe']")
+# ele2.click()
+# ele3 = driver.switch_to.frame(driver.find_element(By.XPATH,"//iframe[@name='SingleFrame']"))
+# time.sleep(5)
+# ele4 = driver.find_element(By.XPATH,"//input[@type='text']")
+# ele4.send_keys('WELCOME!')
+# ele4.send_keys(Keys.ENTER)
+# time.sleep(5)
+
+########## window ids by switching
+# parent_window = driver.current_window_handle
+# print("Parent window id: ",parent_window)
+# time.sleep(5)
+# ele1 = driver.find_element(By.XPATH,"//button[@onclick='myFunction()']")
+# ele1.click()
+# time.sleep(5)
+# child_window = driver.window_handles
+# print("child window id: ",child_window[1])
+# time.sleep(5)
+# windowids = driver.window_handles
+# print("window ids are: ",windowids)
+# time.sleep(5)
+# child = driver.switch_to.window(windowids[1])
+# print("title of child window is: ", driver.title)
+# driver.close()
+# time.sleep(5)
+# parent = driver.switch_to.window(windowids[0])
+# print("title of parent window is: ",driver.title)
+# time.sleep(5)
+
+#########search results
+# ele1 = driver.find_element(By.ID,"Wikipedia1_wikipedia-search-input")
+# ele1.click()
+# ele1.send_keys('BTS')
+# ele1.send_keys(Keys.ENTER)
+# button = driver.find_element(By.XPATH,"//input[@type='submit']")
+# button.click()
+# time.sleep(5)
+# ele3 = driver.find_elements(By.XPATH,"//a[contains(text(),'BTS')]")
+# for link in ele3:
+    # link.click()
+    # time.sleep(5)
+# windowids = driver.window_handles
+# print('window id are: ',windowids)
+# closing_window = driver.window_handles[-5]   ###################### doubt
+# driver.switch_to.window(closing_window)
+# driver.close()
+# time.sleep(7)
+
+################## disable notifications
+
+# opt = webdriver.ChromeOptions()
+# opt.add_argument("--disable notifications")
+
+# driver = webdriver.Chrome()
+# driver.get("https://whatmylocation.com/")
+# driver.maximize_window()
+# time.sleep(5)
+
+############# counting no of rows and columns
+
+# driver = webdriver.Chrome()
+
+# driver.get("https://testautomationpractice.blogspot.com/")
+# driver.maximize_window()
+# time.sleep(5)
+
+# noofrows = len(driver.find_elements(By.XPATH,"//table[@name='BookTable']//tr"))
+# noofcolumns = len(driver.find_elements(By.XPATH,"//table[@name='BookTable']/tbody/tr/th"))
+
+# print('No of rows are:',noofrows)
+# print('No of columns:',noofcolumns)
+# time.sleep(5)
+
+########### displaying the row data
+# driver = webdriver.Chrome()
+
+# driver.get("https://testautomationpractice.blogspot.com/")
+# driver.maximize_window()
+# time.sleep(5)
+
+# noofrows = len(driver.find_elements(By.XPATH,"//table[@name='BookTable']//tr"))
+# noofcolumns = len(driver.find_elements(By.XPATH,"//table[@name='BookTable']/tbody/tr/th"))
+
+# ele1 = driver.find_elements(By.XPATH,"//table[@name='BookTable']/tbody/tr/td")
+# for r in range(2, noofrows+1):
+    # for c in range(1, noofcolumns+1):
+        # ele1 = driver.find_element(By.XPATH,"//table[@name='BookTable']/tbody/tr["+str(r)+"]/td["+str(c)+"]").text
+        # print(ele1,end="        ")
+    # print("............")
+   
+################### displaying the column data
+# driver = webdriver.Chrome()
+
+# driver.get("https://testautomationpractice.blogspot.com/")
+# driver.maximize_window()
+# time.sleep(5)
+
+# noofrows = len(driver.find_elements(By.XPATH,"//table[@name='BookTable']//tr"))
+# noofcolumns = len(driver.find_elements(By.XPATH,"//table[@name='BookTable']/tbody/tr/th"))
+
+
+# for c in range(1, noofcolumns+1):
+    # for r in range(2, noofrows+1):
+        # ele1 = driver.find_element(By.XPATH,"//table[@name='BookTable']/tbody/tr["+str(r)+"]/td["+str(c)+"]").text
+        # print(ele1,end="        ")
+    # print("............")
+   
+
+###################### read specific row and column data
+
+# driver = webdriver.Chrome()
+
+# driver.get("https://testautomationpractice.blogspot.com/")
+# driver.maximize_window()
+# time.sleep(5)
+
+# ele1= driver.find_element(By.XPATH,"//table[@name='BookTable']/tbody/tr[3]/td[2]").text
+# print(ele1)
+
+################### redaing the data based on specific condition 
+
+driver = webdriver.Chrome()
+
+driver.get("https://testautomationpractice.blogspot.com/")
+driver.maximize_window()
 time.sleep(5)
 
-driver.quit
+noofrows = len(driver.find_elements(By.XPATH,"//table[@name='BookTable']//tr"))
+for r in range(2, noofrows+1):
+    author = driver.find_element(By.XPATH,"//table[@name='BookTable']/tbody/tr["+str(r)+"]/td[2]").text
+    if author == 'Mukesh':
+        book= driver.find_element(By.XPATH,"//table[@name='BookTable']/tbody/tr["+str(r)+"]/td[1]").text
+        print(book,"         ",author)
+
+driver.quit()
 
