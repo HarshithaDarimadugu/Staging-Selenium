@@ -437,18 +437,60 @@ import time
 
 ################### redaing the data based on specific condition 
 
+# driver = webdriver.Chrome()
+
+# driver.get("https://testautomationpractice.blogspot.com/")
+# driver.maximize_window()
+# time.sleep(5)
+
+# noofrows = len(driver.find_elements(By.XPATH,"//table[@name='BookTable']//tr"))
+# for r in range(2, noofrows+1):
+    # author = driver.find_element(By.XPATH,"//table[@name='BookTable']/tbody/tr["+str(r)+"]/td[2]").text
+    # if author == 'Mukesh':
+        # book= driver.find_element(By.XPATH,"//table[@name='BookTable']/tbody/tr["+str(r)+"]/td[1]").text
+        # print(book,"         ",author)
+
+# driver.quit()
+
+
+############### dynamic webtable
+
 driver = webdriver.Chrome()
-
-driver.get("https://testautomationpractice.blogspot.com/")
+driver.get("https://cosmocode.io/automation-practice-webtable/")
 driver.maximize_window()
+
+# user = driver.find_element(By.XPATH,"//input[@name='username']")
+# user.click()
+# user.send_keys("Admin")
+# user.send_keys(Keys.ENTER)
+
+# pw = driver.find_element(By.XPATH,"//input[@name='password']")
+# pw.click()
+# pw.send_keys("admin123")
+# pw.send_keys(Keys.ENTER)
+
+############## finding no of rows and columns
+rows = len(driver.find_elements(By.XPATH,"//table[@id = 'countries']/tbody/tr"))
+columns = len(driver.find_elements(By.XPATH,"//table[@id = 'countries']/tbody/tr[1]/td"))
+
+print('no of rows: ',rows)
+print('no of columns: ',columns)
+ 
+########### reading the particular dat from the table
+# ele1 = driver.find_element(By.XPATH,"//table[@id = 'countries']/tbody/tr[78]/td[2]").text
+# print(ele1)
+
+# for r in range(2, rows+1):
+    # for c in range(1, columns+1):
+        # data = driver.find_element(By.XPATH,"//table[@id = 'countries']/tbody/tr["+str(r)+"]/td["+str(c)+"]").text
+        # print(data, end = "    ")
+    # print("   ")
+    
+###############finding the data based on the particular condition
+for r in range(2, rows+1):
+    capital = driver.find_element(By.XPATH,"//table[@id = 'countries']/tbody/tr["+str(r)+"]/td[3]").text
+    if capital == 'New Delhi':
+        state = driver.find_element(By.XPATH,"//table[@id = 'countries']/tbody/tr["+str(r)+"]/td[2]").text
+        print(state,"           ",capital)
 time.sleep(5)
-
-noofrows = len(driver.find_elements(By.XPATH,"//table[@name='BookTable']//tr"))
-for r in range(2, noofrows+1):
-    author = driver.find_element(By.XPATH,"//table[@name='BookTable']/tbody/tr["+str(r)+"]/td[2]").text
-    if author == 'Mukesh':
-        book= driver.find_element(By.XPATH,"//table[@name='BookTable']/tbody/tr["+str(r)+"]/td[1]").text
-        print(book,"         ",author)
-
 driver.quit()
-
