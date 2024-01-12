@@ -487,10 +487,14 @@ print('no of columns: ',columns)
     # print("   ")
     
 ###############finding the data based on the particular condition
-for r in range(2, rows+1):
-    capital = driver.find_element(By.XPATH,"//table[@id = 'countries']/tbody/tr["+str(r)+"]/td[3]").text
-    if capital == 'New Delhi':
-        state = driver.find_element(By.XPATH,"//table[@id = 'countries']/tbody/tr["+str(r)+"]/td[2]").text
-        print(state,"           ",capital)
-time.sleep(5)
-driver.quit()
+# for r in range(2, rows+1):
+    # capital = driver.find_element(By.XPATH,"//table[@id = 'countries']/tbody/tr["+str(r)+"]/td[3]").text
+    # if capital == 'New Delhi':
+        # state = driver.find_element(By.XPATH,"//table[@id = 'countries']/tbody/tr["+str(r)+"]/td[2]").text
+        # print(state,"           ",capital)
+# time.sleep(5)
+# driver.quit()
+
+########### date picker
+## URL : https://jqueryui.com/datepicker/
+#### url : https://www.dummyticket.com/dummy-ticket-for-visa-application/
