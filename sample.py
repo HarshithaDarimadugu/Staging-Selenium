@@ -9,6 +9,7 @@ from selenium.webdriver.support import expected_conditions  as EC
 from selenium.common.exceptions import NoSuchElementException, ElementNotVisibleException, ElementNotSelectableException
 import requests
 import time
+from selenium.webdriver.common.action_chains import ActionChains
 
 # obj = Service('https://testautomationpractice.blogspot.com/')
 # driver = webdriver.Chrome(service = obj)
@@ -455,9 +456,9 @@ import time
 
 ############### dynamic webtable
 
-driver = webdriver.Chrome()
-driver.get("https://cosmocode.io/automation-practice-webtable/")
-driver.maximize_window()
+# driver = webdriver.Chrome()
+# driver.get("https://cosmocode.io/automation-practice-webtable/")
+# driver.maximize_window()
 
 # user = driver.find_element(By.XPATH,"//input[@name='username']")
 # user.click()
@@ -470,11 +471,11 @@ driver.maximize_window()
 # pw.send_keys(Keys.ENTER)
 
 ############## finding no of rows and columns
-rows = len(driver.find_elements(By.XPATH,"//table[@id = 'countries']/tbody/tr"))
-columns = len(driver.find_elements(By.XPATH,"//table[@id = 'countries']/tbody/tr[1]/td"))
+# rows = len(driver.find_elements(By.XPATH,"//table[@id = 'countries']/tbody/tr"))
+# columns = len(driver.find_elements(By.XPATH,"//table[@id = 'countries']/tbody/tr[1]/td"))
 
-print('no of rows: ',rows)
-print('no of columns: ',columns)
+# print('no of rows: ',rows)
+# print('no of columns: ',columns)
  
 ########### reading the particular dat from the table
 # ele1 = driver.find_element(By.XPATH,"//table[@id = 'countries']/tbody/tr[78]/td[2]").text
@@ -498,3 +499,110 @@ print('no of columns: ',columns)
 ########### date picker
 ## URL : https://jqueryui.com/datepicker/
 #### url : https://www.dummyticket.com/dummy-ticket-for-visa-application/
+
+
+# driver = webdriver.Chrome()
+# driver.get("https://jqueryui.com/datepicker/")
+# driver.maximize_window()
+
+# e_1 = driver.switch_to.frame((driver.find_element(By.XPATH,"//iframe[@class='demo-frame']")))
+# e_2 = driver.find_element(By.XPATH,"//input[@id='datepicker']")
+# e_2.click()
+# e_2.send_keys('12/11/2001')
+# time.sleep(5)
+# e_2.send_keys(Keys.ENTER)
+# time.sleep(5)
+
+############### mouse over actions using actionchains
+#####moving to the element with some key words like : move_to_element, .click(), .perform()
+# driver = webdriver.Chrome()
+# driver.get ("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
+# driver.maximize_window()
+# time.sleep(5)
+
+# e_1 = driver.find_element(By.XPATH,"//input[@name='username']").send_keys('Admin')
+# e_2 = driver.find_element(By.XPATH,"//input[@name='password']").send_keys('admin123')
+# e_3 = driver.find_element(By.XPATH,"//button[@type='submit']").click()
+# time.sleep(7)
+
+# e_4 = driver.find_element(By.LINK_TEXT,"Admin")
+# time.sleep(5)
+# chains = ActionChains(driver)
+# chains.move_to_element(e_4).click().perform()
+# time.sleep(5)
+
+# e_5 = driver.find_element(By.XPATH," (//li[@class='oxd-topbar-body-nav-tab --parent --visited'])[1]")
+# time.sleep(5)
+# chains.move_to_element(e_5).click().perform()
+
+# e_6 = driver.find_element(By.XPATH,"(//li)[15]")
+# time.sleep(5)
+# chains.move_to_element(e_6).click().perform()
+# time.sleep(10)
+
+###########right clixk
+
+# driver = webdriver.Chrome()
+# driver.get ("https://toolsqa.com/selenium-webdriver/right-click-and-double-click-in-selenium/")
+# driver.maximize_window()
+# time.sleep(5)
+
+# e_1 = driver.find_element(By.XPATH,"//ul[@class='navbar__links d-none d-lg-flex']//a[normalize-space()='About']")
+# chains = ActionChains(driver)
+
+# chains.context_click(e_1).perform()
+# time.sleep(10)
+
+##########double click
+# driver = webdriver.Chrome()
+# driver.get("https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_ev_ondblclick3")
+# driver.maximize_window()
+# time.sleep(5)
+
+# e_1 = driver.switch_to.frame('iframeResult')
+# e_2 = driver.find_element(By.XPATH,"/html[1]/body[1]/input[1]")
+# e_2.clear()
+# e_2.send_keys('Krishna')
+# e_3 = driver.find_element(By.XPATH,"//button[@ondblclick='myFunction()']")
+
+# chains = ActionChains(driver)
+# chains.double_click(e_3).perform()
+# time.sleep(10)
+
+########## drag and drop
+# driver = webdriver.Chrome()
+# driver.get("http://www.dhtmlgoodies.com/scripts/drag-drop-custom/demo-drag-drop-3.html")
+# driver.maximize_window()
+# time.sleep(5)
+
+# e_1 = driver.find_element(By.ID,"box3")
+# e_2= driver.find_element(By.ID,"box103")
+
+# chains = ActionChains(driver)
+# chains.drag_and_drop(e_1,e_2).perform()
+# time.sleep(10)
+
+########## slider
+driver = webdriver.Chrome()
+driver.get("https://www.jqueryscript.net/demo/Price-Range-Slider-jQuery-UI/")
+driver.maximize_window()
+time.sleep(5)
+
+min_slider = driver.find_element(By.XPATH,"//span[1]")
+max_slider = driver.find_element(By.XPATH,"//span[2]")
+
+print("range of min and max slideris :")
+print(min_slider.location) #{'x': 59, 'y': 250}
+print(max_slider.location) #{'x': 545, 'y': 250}
+time.sleep(5)
+
+chains = ActionChains(driver)
+chains.drag_and_drop_by_offset(min_slider,100,0)
+chains.drag_and_drop_by_offset(max_slider,-39,0)
+
+print("range of min and max slider is after moving :")
+print(min_slider.location)
+print(max_slider.location)
+time.sleep(5)
+
+driver.quit()
