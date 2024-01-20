@@ -583,26 +583,82 @@ from selenium.webdriver.common.action_chains import ActionChains
 # time.sleep(10)
 
 ########## slider
-driver = webdriver.Chrome()
-driver.get("https://www.jqueryscript.net/demo/Price-Range-Slider-jQuery-UI/")
-driver.maximize_window()
-time.sleep(5)
+# driver = webdriver.Chrome()
+# driver.get("https://www.jqueryscript.net/demo/Price-Range-Slider-jQuery-UI/")
+# driver.maximize_window()
+# time.sleep(5)
 
-min_slider = driver.find_element(By.XPATH,"//span[1]")
-max_slider = driver.find_element(By.XPATH,"//span[2]")
+# min_slider = driver.find_element(By.XPATH,"//span[1]")
+# max_slider = driver.find_element(By.XPATH,"//span[2]")
 
-print("range of min and max slideris :")
-print(min_slider.location) #{'x': 59, 'y': 250}
-print(max_slider.location) #{'x': 545, 'y': 250}
-time.sleep(5)
+# print("range of min and max slideris :")
+# print(min_slider.location) #{'x': 59, 'y': 250}
+# print(max_slider.location) #{'x': 545, 'y': 250}
+# time.sleep(5)
 
-chains = ActionChains(driver)
-chains.drag_and_drop_by_offset(min_slider,100,0)
-chains.drag_and_drop_by_offset(max_slider,-39,0)
+# chains = ActionChains(driver)
+# chains.drag_and_drop_by_offset(min_slider,100,0).perform()
+# chains.drag_and_drop_by_offset(max_slider,-39,0).perform()
 
-print("range of min and max slider is after moving :")
-print(min_slider.location)
-print(max_slider.location)
-time.sleep(5)
+# print("range of min and max slider is after moving :")
+# print(min_slider.location) # {'x': 161, 'y': 250}
+# print(max_slider.location) #{'x': 506, 'y': 250}
+# time.sleep(5)
 
+########### scrolling to the particular element
+# driver = webdriver.Chrome()
+# driver.get("https://www.worldometers.info/geography/flags-of-the-world/")
+# driver.maximize_window()
+# time.sleep(5)
+
+# e_1 = driver.find_element(By.XPATH,"//img[@src='/img/flags/small/tn_er-flag.gif']")
+# driver.execute_script('arguments[0].scrollIntoView(true);',e_1)
+# e_1.click()
+# time.sleep(5)
+
+########### Scroll down - moving the page to a particular pixel value
+# driver = webdriver.Chrome()
+# driver.get("https://www.worldometers.info/geography/flags-of-the-world/")
+# driver.maximize_window()
+# time.sleep(5)
+
+# driver.execute_script("window.scrollBy(0,3000)","")
+# page = driver.execute_script("return window.pageYOffset")
+# print("page scroll to the pixels value is :",page)
+# time.sleep(5)
+
+############# scrolling to the page end
+# driver = webdriver.Chrome()
+# driver.get("https://www.worldometers.info/geography/flags-of-the-world/")
+# driver.maximize_window()
+# time.sleep(5)
+
+# driver.execute_script('window.scrollBy(0,document.body.scrollHeight)')
+# time.sleep(5)
+
+######### scrolling to starting of the page
+
+# driver.execute_script('window.scrollBy(0,-document.body.scrollHeight)')
+# time.sleep(5)
+# driver.quit()
+
+######### in right click method, clicking the any option
+# driver = webdriver.Chrome()
+# driver.get ("https://swisnl.github.io/jQuery-contextMenu/demo.html")
+# driver.maximize_window()
+# time.sleep(5)
+
+# e_1 = driver.find_element(By.XPATH,"//span[@class='context-menu-one btn btn-neutral']")
+# chains = ActionChains(driver)
+
+# chains.context_click(e_1).perform()
+# e_2 = driver.find_element(By.XPATH,"//span[normalize-space()='Copy']")
+# e_2.click()
+# time.sleep(5)
+
+# alert = driver.switch_to.alert
+# alert.accept()
+# time.sleep(10)
 driver.quit()
+
+
