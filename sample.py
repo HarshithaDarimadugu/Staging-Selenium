@@ -179,7 +179,6 @@ from selenium.webdriver.common.action_chains import ActionChains
    
 ############### 05/01/2024
 ########### links -- internal, external and broken links
-################ kalyan sir
 # ele11 = driver.find_elements(By.XPATH,'//a') ####### getting the count of links in a page
 # print(len(ele11))
 
